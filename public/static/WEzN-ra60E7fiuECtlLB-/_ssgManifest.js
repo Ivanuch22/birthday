@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[language]\u002Fauth\u002Fforgot-password","\u002F[language]\u002Fauth\u002Flogin","\u002F[language]\u002Fauth\u002Fsign-up"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/addFriendship/route": "app/api/addFriendship/route.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/auth/sign-in/route": "app/api/auth/sign-in/route.js",
+  "/api/getAllUserFriends/route": "app/api/getAllUserFriends/route.js",
+  "/api/getAllUsers/route": "app/api/getAllUsers/route.js",
+  "/api/getCities/route": "app/api/getCities/route.js",
+  "/api/remind/route": "app/api/remind/route.js",
+  "/[language]/(pages)/(home)/page": "app/[language]/(pages)/(home)/page.js",
+  "/[language]/(pages)/auth/forgot-password/page": "app/[language]/(pages)/auth/forgot-password/page.js",
+  "/[language]/(pages)/auth/login/page": "app/[language]/(pages)/auth/login/page.js",
+  "/[language]/(pages)/auth/sign-up/page": "app/[language]/(pages)/auth/sign-up/page.js",
+  "/[language]/(pages)/user/[userId]/add-friend/page": "app/[language]/(pages)/user/[userId]/add-friend/page.js",
+  "/[language]/(pages)/user/[userId]/page": "app/[language]/(pages)/user/[userId]/page.js"
+}

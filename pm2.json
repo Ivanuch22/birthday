@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "my-next-app",
+      "script": "npm start",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
