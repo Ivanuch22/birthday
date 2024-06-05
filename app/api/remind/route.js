@@ -39,18 +39,19 @@ export async function POST(req, res) {
             auth: {
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASSWORD
-            },
-            tls: {
-                rejectUnauthorized: false
-            },
-            dkim: {
-                domainName: process.env.DOMAIN_NAME,
-                keySelector: 'dkim',
-                privateKey: process.env.DKIM_PRIVATE_KEY,
             }
+            // tls: {
+            //     rejectUnauthorized: false
+            // },
+            // dkim: {
+            //     domainName: process.env.DOMAIN_NAME,
+            //     keySelector: 'dkim',
+            //     privateKey: process.env.DKIM_PRIVATE_KEY,
+            // }
         });
 
         const sendPasswordReminder = (email) => {
+            console.log("start sending emails")
             const mailOptions = {
                 from: `${process.env.MAIL_USER}`,
                 to: email,
