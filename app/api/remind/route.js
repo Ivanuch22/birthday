@@ -33,9 +33,8 @@ export async function POST(req, res) {
         console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
 
         const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
+            host: "smtp.zoho.eu",
+            port: 465,
             auth: {
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASSWORD
