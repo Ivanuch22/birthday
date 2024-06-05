@@ -62,7 +62,7 @@ export async function POST(req, res) {
         const sendPasswordReminder = (email) => {
             console.log("start sending emails")
             const mailOptions = {
-                from: `${process.env.MAIL_USER}`,
+                from: `raphael.hagenes@ethereal.email`,
                 to: email,
                 subject: 'Password Reminder',
                 text: 'Your password is: ' + decryptedPassword,
