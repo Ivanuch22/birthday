@@ -33,7 +33,7 @@ export async function POST(req, res) {
         console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
 
         const transporter = nodemailer.createTransport({
-            host: process.env.MAIL_USER,
+            host: process.env.MAIL_HOST,
             port: process.env.MAIL_PORT,
             auth: {
                 user: process.env.MAIL_USER,
