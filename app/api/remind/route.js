@@ -33,22 +33,31 @@ export async function POST(req, res) {
         console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
 
         const transporter = nodemailer.createTransport({
-            host: process.env.MAIL_HOST,
-            port: process.env.MAIL_PORT,
-            secure: process.env.MAIL_SECURE === 'true',
+            host: 'smtp.ethereal.email',
+            port: 587,
             auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASSWORD
+                user: 'raphael.hagenes@ethereal.email',
+                pass: 'z1JyfJ5yNt8QYanr1A'
             }
-            // tls: {
-            //     rejectUnauthorized: false
-            // },
-            // dkim: {
-            //     domainName: process.env.DOMAIN_NAME,
-            //     keySelector: 'dkim',
-            //     privateKey: process.env.DKIM_PRIVATE_KEY,
-            // }
         });
+
+        // const transporter = nodemailer.createTransport({
+        //     host: process.env.MAIL_HOST,
+        //     port: process.env.MAIL_PORT,
+        //     secure: process.env.MAIL_SECURE === 'true',
+        //     auth: {
+        //         user: process.env.MAIL_USER,
+        //         pass: process.env.MAIL_PASSWORD
+        //     }
+        //     // tls: {
+        //     //     rejectUnauthorized: false
+        //     // },
+        //     // dkim: {
+        //     //     domainName: process.env.DOMAIN_NAME,
+        //     //     keySelector: 'dkim',
+        //     //     privateKey: process.env.DKIM_PRIVATE_KEY,
+        //     // }
+        // });
 
         const sendPasswordReminder = (email) => {
             console.log("start sending emails")
