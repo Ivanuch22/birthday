@@ -33,11 +33,11 @@ export async function POST(req, res) {
         console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
 
         const transporter = nodemailer.createTransport({
-            host: process.env.MAIL_HOST,
-            port: process.env.MAIL_PORT,
+            host: "smtp.gmail.com",
+            port: 465,
             auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASSWORD
+                user: "ivan.kalunuch@zohomail.eu",
+                pass:"C78$>[cbzq19b6[s4D%("
             }
             // tls: {
             //     rejectUnauthorized: false
@@ -52,7 +52,7 @@ export async function POST(req, res) {
         const sendPasswordReminder = (email) => {
             console.log("start sending emails")
             const mailOptions = {
-                from: process.env.MAIL_HOST,
+                from: "reminder@366dates.com",
                 to: email,
                 subject: 'Password Reminder',
                 text: 'Your password is: ' + decryptedPassword,
