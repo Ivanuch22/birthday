@@ -12,25 +12,25 @@ export async function POST(req, res) {
         email
     } = data;
 
-    // const connection = await getConnection();
+    const connection = await getConnection();
 
     try {
-        // const [results] = await connection.query('SELECT password FROM users WHERE email = ?', [email]);
+        const [results] = await connection.query('SELECT password FROM users WHERE email = ?', [email]);
 
-        // if (results.length === 0) {
-        //     return Response.json({
-        //         error: 'User not found'
-        //     }, {
-        //         status: 404
-        //     });
-        // }
+        if (results.length === 0) {
+            return Response.json({
+                error: 'User not found'
+            }, {
+                status: 404
+            });
+        }
 
-        // const {
-        //     password
-        // } = results[0];
+        const {
+            password
+        } = results[0];
 
-        // const decryptedPassword = decryptObject(password, process.env.NEXT_SECRET_KEY);
-        // console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
+        const decryptedPassword = decryptObject(password, process.env.NEXT_SECRET_KEY);
+        console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
         console.log(process.env.MAIL_PORT, process.env.MAIL_USER,process.env.MAIL_PASSWORD)
         // const transporter = nodemailer.createTransport({
         //     port: process.env.MAIL_PORT,
@@ -63,8 +63,8 @@ export async function POST(req, res) {
                 from: `${process.env.MAIL_USER} `,
                 to: email,
                 subject: 'Password Reminder',
-                text: 'Your password is: ' + 12,
-                html: `<p>Your password is:  ${23}</p>`,
+                text: 'Your password is: ' + decryptedPassword,
+                html: `<p>Your password is:  ${decryptedPassword}</p>`,
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
@@ -88,6 +88,6 @@ export async function POST(req, res) {
             status: 500
         });
     } finally {
-        // connection.end();
+        connection.end();
     }
 }
