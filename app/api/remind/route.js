@@ -32,27 +32,35 @@ export async function POST(req, res) {
         const decryptedPassword = decryptObject(password, process.env.NEXT_SECRET_KEY);
         console.log("🚀 ~ POST ~ decryptedPassword:", decryptedPassword)
         console.log(process.env.MAIL_PORT, process.env.MAIL_USER)
+        // const transporter = nodemailer.createTransport({
+        //     port: process.env.MAIL_PORT,
+        //     host: process.env.MAIL_HOST,
+        //     auth: {
+        //         user: process.env.MAIL_USER,
+        //         pass: process.env.MAIL_PASSWORD
+        //     }
+        //     // tls: {
+        //     //     rejectUnauthorized: false
+        //     // },
+        //     // dkim: {
+        //     //     domainName: process.env.DOMAIN_NAME,
+        //     //     keySelector: 'dkim',
+        //     //     privateKey: process.env.DKIM_PRIVATE_KEY,
+        //     // }
+        // });
         const transporter = nodemailer.createTransport({
-            port: process.env.MAIL_PORT,
             host: process.env.MAIL_HOST,
+            port: process.env.MAIL_PORT,
             auth: {
                 user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASSWORD
-            }
-            // tls: {
-            //     rejectUnauthorized: false
-            // },
-            // dkim: {
-            //     domainName: process.env.DOMAIN_NAME,
-            //     keySelector: 'dkim',
-            //     privateKey: process.env.DKIM_PRIVATE_KEY,
-            // }
+                pass: process.env.MAIL_PASSWORD,
+            },
         });
 
         const sendPasswordReminder = (email) => {
             console.log("start sending emails")
             const mailOptions = {
-                from: process.env.MAIL_USER,
+                from: `${process.env.MAIL_USER} `,
                 to: email,
                 subject: 'Password Reminder',
                 text: 'Your password is: ' + decryptedPassword,
