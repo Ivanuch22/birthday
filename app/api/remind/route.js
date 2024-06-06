@@ -55,7 +55,7 @@ export async function POST(req, res) {
                 from: process.env.MAIL_USER,
                 to: email,
                 subject: 'Password Reminder',
-                text: 'Your password is: ' + 123,
+                text: 'Your password is: ' + decryptedPassword,
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
