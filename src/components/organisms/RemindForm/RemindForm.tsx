@@ -7,6 +7,7 @@ import { Input } from '@/components/atoms/Input';
 import { Button } from '@/components/atoms/Button/Button';
 import StyledForm from '@/components/molecules/StyledForm/StyledForm';
 import { useRemindMutation } from '@/lib/redux/api/authApi';
+import { useRouter } from 'next/router';
 
 type RemindFormProps = {
     buttonTitle: string;
@@ -17,7 +18,7 @@ const RemindForm: React.FC<RemindFormProps> = ({ buttonTitle }) => {
     const [formData, setFormData] = useState<{ email: string }>({ email: '' });
 
     const [remind, { isLoading, isError, isSuccess }] = useRemindMutation();
-
+    const router = useRouter(); // Initialize useRouter
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -36,6 +37,7 @@ const RemindForm: React.FC<RemindFormProps> = ({ buttonTitle }) => {
     useEffect(() => {
         if (isSuccess) {
             toast.success('Password was sent to your email');
+            router.push('/auth/login'); 
         } else if (isError) {
             toast.error('', { autoClose: false });
         }
